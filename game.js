@@ -66,6 +66,8 @@ function restart() {
             timer_running = false; // Stop this loop running next time
             timer_element.innerText = "Time's up!"; // Update the timer text
         }
+    } else {
+        time_left = 0;
     }
     let score_element = document.getElementById("score");
     let timer_element = document.getElementById("timer");
