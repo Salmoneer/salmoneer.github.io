@@ -60,17 +60,17 @@ function restart() {
 /* Perform one "tick", every one tenth of a second (game loop) */
 (function timer() {
     setTimeout(timer, 100); // In another 100ms, or 1/10 of a second, run the function again.
+
+    let score_element = document.getElementById("score");
+    let timer_element = document.getElementById("timer");
+    score_element.innerText = `Score: ${score}`; // Update score text
+    timer_element.innerText = `Time: ${time_left.toFixed(1)}`; // Update the timer text
+
     if (timer_running) { // While the timer is still going:
         time_left -= 0.1; // Deplete the timer by the 100 ms of time that has passed. I did it like this instead of with actual timestamps because I wanted the timer to tick down by exactly this much every time it updated, and have previously dealt with javascript time and dates, and found them to be unpleasant to work with.
         if (time_left <= 0) { // Detect running out of time
             timer_running = false; // Stop this loop running next time
             timer_element.innerText = "Time's up!"; // Update the timer text
         }
-    } else {
-        time_left = 0;
     }
-    let score_element = document.getElementById("score");
-    let timer_element = document.getElementById("timer");
-    score_element.innerText = `Score: ${score}`; // Update score text
-    timer_element.innerText = `Time: ${time_left.toFixed(1)}`; // Update the timer text
 })(); // The brackets make the function run automatically. See: https://developer.mozilla.org/en-US/docs/Glossary/IIFE
