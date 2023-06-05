@@ -66,11 +66,12 @@ function restart() {
     score_element.innerText = `Score: ${score}`; // Update score text
     timer_element.innerText = `Time: ${time_left.toFixed(1)}`; // Update the timer text
 
-    if (timer_running) { // While the timer is still going:
-        time_left -= 0.1; // Deplete the timer by the 100 ms of time that has passed. I did it like this instead of with actual timestamps because I wanted the timer to tick down by exactly this much every time it updated, and have previously dealt with javascript time and dates, and found them to be unpleasant to work with.
-        if (time_left <= 0) { // Detect running out of time
-            timer_running = false; // Stop this loop running next time
-            timer_element.innerText = "Time's up!"; // Update the timer text
-        }
+    if (timer_running) { // Count down while the timer is still running
+        time_left -= 0.1;
+    }
+
+    if (time_left <= 0) { // Detect running out of time
+        timer_running = false; // Stop this loop running next time
+        timer_element.innerText = "Time: 0"; // Update the timer text
     }
 })(); // The brackets make the function run automatically. See: https://developer.mozilla.org/en-US/docs/Glossary/IIFE

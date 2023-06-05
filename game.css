@@ -24,10 +24,12 @@ canvas {
 }
 
 button {
-    background: none;
+    background: #888;
     border: none;
+    margin: 12px;
     width: 200px;
     height: 80px;
     font-weight: bold;
     font-size: 32pt;
+    cursor: pointer;
 }
